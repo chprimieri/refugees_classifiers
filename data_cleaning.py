@@ -21,6 +21,16 @@ refugee_df = refugee_df.drop(refugee_df[
     (refugee_df['Country of origin (ISO)'] == 'UNK') |
     (refugee_df['Country of asylum (ISO)'] == 'UNK')].index)
 
+# Merge with World Region dataset
+region_df = pd.read_csv('datasets/UNStats_standard_country_region.csv')
+refugee_df = refugee_df.merge(
+    region_df[['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code']], 
+    how='left', 
+    left_on=['Country of asylum (ISO)'], 
+    right_on=['ISO-alpha3 Code'])
+refugee_df['Asylum Region'] = refugee_df.apply(lambda row: row['Sub-region Name'] if pd.isna(row['Intermediate Region Name']) else row['Intermediate Region Name'] , axis=1)
+refugee_df.drop(['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code'], inplace = True, axis=1)
+
 # Merge with the Geographic Distance dataset
 geo_df = pd.read_csv('datasets/CEPII_geographic_distances.csv')
 refugee_df = refugee_df.merge(
@@ -88,9 +98,8 @@ refugee_df['GDI asylum'] = refugee_df.apply(lambda row: row['gdi_' + str(row.Yea
 refugee_df['GII asylum'] = refugee_df.apply(lambda row: row['gii_' + str(row.Year)], axis=1)
 refugee_df['PHDI asylum'] = refugee_df.apply(lambda row: row['phdi_' + str(row.Year)], axis=1)
 
-# Drop the columns from dev_df and the countries ISO code
+# Drop the columns from dev_df
 refugee_df.drop(dev_columns, inplace = True, axis=1)
-refugee_df.drop(['Country of origin (ISO)', 'Country of asylum (ISO)'], inplace = True, axis=1)
 
 # Add diff columns between Origin and Asylum
 refugee_df['HDI diff'] = refugee_df.apply(lambda row: row['HDI asylum'] - row['HDI origin'], axis=1)
@@ -101,6 +110,17 @@ refugee_df['GNIPC diff'] = refugee_df.apply(lambda row: row['GNIPC asylum'] - ro
 refugee_df['GDI diff'] = refugee_df.apply(lambda row: row['GDI asylum'] - row['GDI origin'], axis=1)
 refugee_df['GII diff'] = refugee_df.apply(lambda row: row['GII asylum'] - row['GII origin'], axis=1)
 refugee_df['PHDI diff'] = refugee_df.apply(lambda row: row['PHDI asylum'] - row['PHDI origin'], axis=1)
+
+# Drop data related to Origin Country and unused columns
+refugee_df.drop(['Country of origin (ISO)', 
+                 'Country of asylum (ISO)',
+                 'HDI origin','LE origin',
+                 'EYS origin',
+                 'MYS origin',
+                 'GNIPC origin',
+                 'GDI origin',
+                 'GII origin',
+                 'PHDI origin'], inplace = True, axis=1)
 
 # Check for Missing Values
 missing_values_count = 0

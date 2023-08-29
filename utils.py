@@ -7,13 +7,11 @@ from sklearn.model_selection import train_test_split
 def preprocess_data(data):
     # Split data into features and labels (for the classification task)
     # Features
-    X = data[['Refugees','Distance (Km)','HDI origin','LE origin','EYS origin',
-              'MYS origin','GNIPC origin','GDI origin','GII origin','PHDI origin',
-              'HDI asylum','LE asylum','EYS asylum','MYS asylum','GNIPC asylum',
-              'GDI asylum','GII asylum','PHDI asylum','HDI diff','LE diff','EYS diff',
-              'MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']]  
+    X = data[['Refugees','Distance (Km)','HDI asylum','LE asylum','EYS asylum','MYS asylum',
+              'GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff','LE diff',
+              'EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']]  
     # Labels
-    y = data[['Year']]  
+    y = data[['Year', 'Country of asylum', 'Asylum Region']]
 
     # Split dataset into training set and test set
     # 80% training and 20% test
