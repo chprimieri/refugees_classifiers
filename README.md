@@ -1,47 +1,32 @@
-# Refugees Classifier
+# Refugees Estimator
 
-Simple overview of use/purpose.
+Apply machine learning algorithms to predict the number of refugees that will move from one country to another, using geographic distances and regions and economic and social indicators.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+ML Algorithms:
+- Random Forest
+- Ada Boost
+- Gradient Boosting
 
-## Getting Started
-
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+Datasets:
+- UNHCR refugees data: https://www.unhcr.org/refugee-statistics/download
+- UNDP development indicators: https://hdr.undp.org/data-center/documentation-and-downloads
+- UNStats countries and regions: https://unstats.un.org/unsd/methodology/m49/overview/
+- CEPII geographic distances: http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=6 
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Generate the data.csv dataset:
 ```
-code blocks for commands
+python3 data_cleaning.py
+```
+
+* Run the ML algorithms
+```
+python3 main.py
 ```
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+Camila Haas Primieri - @chprimieri
