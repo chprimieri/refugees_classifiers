@@ -12,23 +12,41 @@ population_columns = [
 refugee_df['Refugees'] = refugee_df[population_columns].sum(axis=1)
 refugee_df.drop(population_columns, inplace = True, axis=1)
 
-# Drop the rows with less then 1000 refugees, internal migrants, stateless refugees and unknow countries
+# Drop the rows with less then 100 refugees, internal migrants, stateless refugees and unknow countries
 refugee_df = refugee_df.drop(refugee_df[
-    (refugee_df['Refugees'] < 1000) | 
+    (refugee_df['Refugees'] < 100) | 
     (refugee_df['Country of origin (ISO)'] == refugee_df['Country of asylum (ISO)']) |
     (refugee_df['Country of origin (ISO)'] == 'XXA') |
     (refugee_df['Country of asylum (ISO)'] == 'XXA') |
     (refugee_df['Country of origin (ISO)'] == 'UNK') |
     (refugee_df['Country of asylum (ISO)'] == 'UNK')].index)
 
-# Merge with World Region dataset
+# Dataset with World Regions Division
 region_df = pd.read_csv('datasets/UNStats_standard_country_region.csv')
+
+# Merge with World Regions for Origin Country
+refugee_df = refugee_df.merge(
+    region_df[['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code']], 
+    how='left', 
+    left_on=['Country of origin (ISO)'], 
+    right_on=['ISO-alpha3 Code'])
+refugee_df['Origin Region'] = refugee_df.apply(
+    lambda row: 
+        row['Sub-region Name'] 
+        if pd.isna(row['Intermediate Region Name']) else 
+        row['Intermediate Region Name'] , axis=1)
+refugee_df.drop(['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code'], inplace = True, axis=1)
+
+# Merge with World Regions for Asylum Country
 refugee_df = refugee_df.merge(
     region_df[['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code']], 
     how='left', 
     left_on=['Country of asylum (ISO)'], 
     right_on=['ISO-alpha3 Code'])
-refugee_df['Asylum Region'] = refugee_df.apply(lambda row: row['Sub-region Name'] if pd.isna(row['Intermediate Region Name']) else row['Intermediate Region Name'] , axis=1)
+refugee_df['Asylum Region'] = refugee_df.apply(
+    lambda row: row['Sub-region Name'] 
+    if pd.isna(row['Intermediate Region Name']) else 
+    row['Intermediate Region Name'] , axis=1)
 refugee_df.drop(['Sub-region Name','Intermediate Region Name','ISO-alpha3 Code'], inplace = True, axis=1)
 
 # Merge with the Geographic Distance dataset
@@ -39,10 +57,7 @@ refugee_df = refugee_df.merge(
     left_on=['Country of origin (ISO)', 'Country of asylum (ISO)'], 
     right_on=['iso_o', 'iso_d'])
 refugee_df.drop(['iso_o','iso_d'], inplace = True, axis=1)
-
-# Prepare the column Distance (Km) as float64 data
 refugee_df = refugee_df.rename(columns={'distw': 'Distance (Km)'})
-refugee_df['Distance (Km)'] = refugee_df.apply(lambda row: row['Distance (Km)'].replace(",", "."), axis=1)
 refugee_df['Distance (Km)'] = pd.to_numeric(refugee_df['Distance (Km)'])
 
 # Dataset with Human Development Indices

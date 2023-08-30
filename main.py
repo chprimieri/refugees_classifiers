@@ -1,9 +1,5 @@
 import pandas as pd
-import numpy as np
-from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, GradientBoostingRegressor
 from sklearn import metrics
 import utils
 
@@ -13,58 +9,90 @@ data = pd.read_csv('datasets/data.csv')
 # Preprocess data
 X_train_std, X_test_std, y_train, y_test = utils.preprocess_data(data)
 
-## RANDOM FOREST
-# Create a Gaussian Random Forest Classifier
-model_rf = RandomForestClassifier(n_estimators=100)
+
+## RANDOM FOREST ##
+# Create a Random Forest Regressor
+model_rf = RandomForestRegressor(n_estimators=100)
+
 # Train the model using the training sets
-model_rf.fit(X_train_std,y_train)
-# and get predictions for the test
+model_rf.fit(X_train_std, y_train)
+
+print("\nRANDOM FOREST")
+
+# Get predictions for the test
 y_pred = model_rf.predict(X_test_std)
-# Model Accuracy, how often is the classifier correct?
-#print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-print('RANDOM FOREST')
-print(metrics.classification_report(y_test, y_pred))
+
+# Model Accuracy, how often is the regression correct?
+print("Accuracy R2 Score: ", metrics.r2_score(y_test, y_pred))
+
+# Median Absolute Error of the model
+print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
+
+# Visualize the Original Vs Predicted Data
+# utils.visualize_original_vs_predicted(y_test, y_pred)
 
 # Feature importance
-feature_imp = pd.Series(model_rf.feature_importances_).sort_values(ascending=False)
-utils.visualize_feature_importance(feature_imp, 'Random Forest')
+feature_imp = pd.Series(model_rf.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+# print(feature_imp.head(50))
 
-## Gradient Boosting could be a step forward Random Forest for more complex problems
-# sklearn.ensemble.GradientBoostingClassifier
-# https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html
+# utils.visualize_feature_importance(feature_imp, 'Random Forest')
 
-## LOGISTIC REGRESSION
-model_lr = LogisticRegression()
+
+## ADA BOOST ##
+# Create an Ada Boost Regressor 
+model_ab = AdaBoostRegressor(random_state=0, n_estimators=100)
+
 # Train the model using the training sets
-model_lr.fit(X_train_std, y_train)
-# and get predictions for the test
-y_pred = model_lr.predict(X_test_std)
+model_ab.fit(X_train_std, y_train)
 
-# Model Accuracy, how often is the classifier correct?
-#print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-print(metrics.classification_report(y_test, y_pred))# logistic regression is really affected by the normalization
+# Get predictions for the test
+y_pred = model_ab.predict(X_test_std)
 
-# Get feature importance from the trained model
-coefficients = np.abs(model_lr.coef_[0])
+print("\nADA BOOST")
 
-feature_imp = pd.Series(coefficients).sort_values(ascending=False)
-utils.visualize_feature_importance(feature_imp, 'Logistic Regression')
+# Model Accuracy, how often is the regression correct?
+print("Accuracy R2 Score: ", metrics.r2_score(y_test, y_pred))
 
+# Median Absolute Error of the model
+print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
 
-## SUPPORT VECTOR MACHINE
-model_svm = SVC(kernel='linear')  # feature coefficients are only available when using a linear kernel
-model_svm.fit(X_train_std, y_train)
+# Visualize the Original Vs Predicted Data
+# utils.visualize_original_vs_predicted(y_test, y_pred)
 
-y_pred = model_svm.predict(X_test_std)
-
-# Model Accuracy, how often is the classifier correct?
-#print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-print(metrics.classification_report(y_test, y_pred))# logistic regression is really affected by the normalization
+# Feature importance
+feature_imp = pd.Series(model_ab.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+# print(feature_imp.head(50))
+# utils.visualize_feature_importance(feature_imp, 'Ada Boost')
 
 
-# Get feature importance from the trained model
-coefficients = np.abs(model_svm.coef_[0])
+## GRADIENT BOOSTING ##
+# Create an Histogram-based Gradient Boosting Regressor 
+model_gb = GradientBoostingRegressor(random_state=0)
 
-# Get feature importance from the trained model
-feature_imp = pd.Series(coefficients).sort_values(ascending=False)
-utils.visualize_feature_importance(feature_imp, 'Support Vector Machine')
+# Train the model using the training sets
+model_gb.fit(X_train_std, y_train)
+
+print("\nGRADIENT BOOSTING")
+
+# Get predictions for the test
+y_pred = model_gb.predict(X_test_std)
+
+# Model Accuracy, how often is the regression correct?
+print("Accuracy R2 Score: ", metrics.r2_score(y_test, y_pred))
+
+# Median Absolute Error of the model
+print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
+
+# Visualize the Original Vs Predicted Data
+# utils.visualize_original_vs_predicted(y_test, y_pred)
+
+# Feature importance
+feature_imp = pd.Series(model_gb.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+# print(feature_imp.head(50))
+# utils.visualize_feature_importance(feature_imp, 'Histogram-based Gradient Boosting')
