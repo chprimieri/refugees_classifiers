@@ -1,5 +1,6 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
 
@@ -41,15 +42,17 @@ def visualize_original_vs_predicted(y_test, y_pred):
     x_ax = range(len(y_test))
 
     # Plot chart
-    plt.plot(x_ax, y_test, linewidth=1, label="original")
-    plt.plot(x_ax, y_pred, linewidth=1.1, label="predicted")
+    plt.figure(figsize=(14, 6))
+    plt.plot(x_ax, y_test, linewidth=1, label="True Values")
+    plt.plot(x_ax, y_pred, linewidth=1.1, label="Predicted Values")
 
     # Add labels to chart
-    plt.title("y-test and y-predicted data")
-    plt.xlabel('X-axis')
-    plt.ylabel('Y-axis')
+    plt.title("True vs Predicted Values")
+    plt.xlabel('Samples')
+    plt.ylabel('Refugees')
     plt.legend(loc='best',fancybox=True, shadow=True)
     plt.grid(True)
+    plt.ticklabel_format(style='plain')
     plt.show() 
 
 def visualize_feature_importance(feature_imp, title):

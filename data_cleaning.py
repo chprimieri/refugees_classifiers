@@ -129,7 +129,8 @@ refugee_df['PHDI diff'] = refugee_df.apply(lambda row: row['PHDI asylum'] - row[
 # Drop data related to Origin Country and unused columns
 refugee_df.drop(['Country of origin (ISO)', 
                  'Country of asylum (ISO)',
-                 'HDI origin','LE origin',
+                 'HDI origin',
+                 'LE origin',
                  'EYS origin',
                  'MYS origin',
                  'GNIPC origin',
