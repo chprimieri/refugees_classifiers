@@ -6,14 +6,20 @@ import matplotlib.pyplot as plt
 data = pd.read_csv('datasets/data.csv')
 
 # Create a .csv with the colunm description
-data.describe().to_csv('datasets/analysis.csv', index=False)
+data.describe().to_csv('datasets/analysis.csv', index=True)
+
+refugees_total = data['Refugees'].sum()
+print("Total Refugees: " + str(refugees_total))
 
 # Create a dataframe only with the top 100 quantity of refugees
 data['Refugees'] = pd.to_numeric(data['Refugees'], errors='coerce')
-data_100 = data[['Year','Country of origin','Country of asylum','Refugees','Origin Region','Asylum Region','Distance (Km)']].sort_values(
-    by=['Refugees'], ascending=False).head(100)
+data_100 = data.sort_values(by=['Refugees'], ascending=False).head(100)
 data_100.to_csv('datasets/analysis2.csv', index=False)
-data_100.describe().to_csv('datasets/analysis3.csv', index=False)
+data_100.describe().to_csv('datasets/analysis3.csv', index=True)
+
+refugees_total_100 = data_100['Refugees'].sum()
+print("Total Refugees in Top 100: " + str(refugees_total_100))
+print("Proportion of Refugees in Top 100: " + str(refugees_total_100/refugees_total))
 
 # Plot a graph with the Refugees by year
 plt.figure(figsize=(14, 6))
@@ -39,17 +45,15 @@ plt.yscale("linear")
 plt.savefig('figures/relplot_year_refugees_with_asylum_region.png')
 
 # Plot a graph with the Refugees by Distance for the top 100
-plt.figure(figsize=(14, 6))
 g = sns.relplot(data=data_100, x="Distance (Km)", y="Refugees", kind="line", errorbar="sd")
 g.ax.set_title("Refugees by Distance - Top 100 migrations")
-g.fig.set_figheight(8)
+g.fig.set_figheight(6)
 g.fig.set_figwidth(10)
 plt.savefig('figures/relplot_100_distance_refugees.png')
 
 # Plot a graph with the Refugees by Distance for all data
-plt.figure(figsize=(14, 6))
 g = sns.relplot(data=data, x="Distance (Km)", y="Refugees", kind="line", errorbar="sd")
 g.ax.set_title("Refugees by Distance - Complete Data")
-g.fig.set_figheight(8)
+g.fig.set_figheight(6)
 g.fig.set_figwidth(10)
 plt.savefig('figures/relplot_complete_distance_refugees.png')
