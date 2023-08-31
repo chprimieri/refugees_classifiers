@@ -17,9 +17,19 @@ Datasets:
 
 ### Executing program
 
+* Install the libraries needed by the scripts:
+```
+pip install -r requirements.txt
+```
+
 * Generate the data.csv dataset:
 ```
 python3 data_cleaning.py
+```
+
+* Generate the analysis.csv datasets:
+```
+python3 analysis.py
 ```
 
 * Run the ML algorithms
