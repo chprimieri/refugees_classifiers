@@ -1,0 +1,101 @@
+Year,Country of origin,Country of asylum,Refugees,Origin Region,Asylum Region,Distance (Km)
+2021,Syrian Arab Rep.,Türkiye,3737369,Western Asia,Western Asia,753.7882
+2020,Syrian Arab Rep.,Türkiye,3641370,Western Asia,Western Asia,753.7882
+2018,Syrian Arab Rep.,Türkiye,3622477,Western Asia,Western Asia,753.7882
+2019,Syrian Arab Rep.,Türkiye,3576370,Western Asia,Western Asia,753.7882
+2017,Syrian Arab Rep.,Türkiye,3424399,Western Asia,Western Asia,753.7882
+2016,Syrian Arab Rep.,Türkiye,2824167,Western Asia,Western Asia,753.7882
+2015,Syrian Arab Rep.,Türkiye,2503846,Western Asia,Western Asia,753.7882
+2021,Venezuela (Bolivarian Republic of),Colombia,1872472,South America,South America,961.3485
+2019,Venezuela (Bolivarian Republic of),Colombia,1780486,South America,South America,961.3485
+2020,Venezuela (Bolivarian Republic of),Colombia,1749895,South America,South America,961.3485
+2012,Afghanistan,Pakistan,1640960,Southern Asia,Southern Asia,805.9722
+2013,Afghanistan,Pakistan,1621199,Southern Asia,Southern Asia,805.9722
+2015,Afghanistan,Pakistan,1566950,Southern Asia,Southern Asia,805.9722
+2014,Syrian Arab Rep.,Türkiye,1558149,Western Asia,Western Asia,753.7882
+2014,Afghanistan,Pakistan,1510372,Southern Asia,Southern Asia,805.9722
+2021,Afghanistan,Pakistan,1503834,Southern Asia,Southern Asia,805.9722
+2020,Afghanistan,Pakistan,1448108,Southern Asia,Southern Asia,805.9722
+2019,Afghanistan,Pakistan,1427490,Southern Asia,Southern Asia,805.9722
+2018,Afghanistan,Pakistan,1408533,Southern Asia,Southern Asia,805.9722
+2017,Afghanistan,Pakistan,1395851,Southern Asia,Southern Asia,805.9722
+2016,Afghanistan,Pakistan,1356607,Southern Asia,Southern Asia,805.9722
+2021,Venezuela (Bolivarian Republic of),Peru,1327362,South America,South America,2599.938
+2018,Venezuela (Bolivarian Republic of),Colombia,1174375,South America,South America,961.3485
+2014,Syrian Arab Rep.,Lebanon,1149904,Western Asia,Western Asia,228.363
+2015,Syrian Arab Rep.,Lebanon,1064948,Western Asia,Western Asia,228.363
+2020,Venezuela (Bolivarian Republic of),Peru,1049970,South America,South America,2599.938
+2017,South Sudan,Uganda,1037898,Eastern Africa,Eastern Africa,1601.213
+2016,Syrian Arab Rep.,Lebanon,1007749,Western Asia,Western Asia,228.363
+2017,Syrian Arab Rep.,Lebanon,994385,Western Asia,Western Asia,228.363
+2021,South Sudan,Uganda,958968,Eastern Africa,Eastern Africa,1601.213
+2015,Afghanistan,Iran (Islamic Rep. of),951175,Southern Asia,Southern Asia,1553.816
+2016,Afghanistan,Iran (Islamic Rep. of),951149,Southern Asia,Southern Asia,1553.816
+2019,Afghanistan,Iran (Islamic Rep. of),951142,Southern Asia,Southern Asia,1553.816
+2018,Afghanistan,Iran (Islamic Rep. of),951142,Southern Asia,Southern Asia,1553.816
+2017,Afghanistan,Iran (Islamic Rep. of),951142,Southern Asia,Southern Asia,1553.816
+2014,Afghanistan,Iran (Islamic Rep. of),950033,Southern Asia,Southern Asia,1553.816
+2018,Syrian Arab Rep.,Lebanon,946219,Western Asia,Western Asia,228.363
+2017,Myanmar,Bangladesh,932204,South-eastern Asia,Southern Asia,878.7948
+2021,Myanmar,Bangladesh,918898,South-eastern Asia,Southern Asia,878.7948
+2019,Syrian Arab Rep.,Lebanon,912518,Western Asia,Western Asia,228.363
+2018,Myanmar,Bangladesh,906635,South-eastern Asia,Southern Asia,878.7948
+2020,South Sudan,Uganda,889054,Eastern Africa,Eastern Africa,1601.213
+2020,Syrian Arab Rep.,Lebanon,866944,Western Asia,Western Asia,228.363
+2020,Myanmar,Bangladesh,866518,South-eastern Asia,Southern Asia,878.7948
+2019,Venezuela (Bolivarian Republic of),Peru,861665,South America,South America,2599.938
+2019,South Sudan,Uganda,861590,Eastern Africa,Eastern Africa,1601.213
+2019,Myanmar,Bangladesh,854764,South-eastern Asia,Southern Asia,878.7948
+2018,South Sudan,Sudan,852080,Eastern Africa,Northern Africa,416.6367
+2013,Syrian Arab Rep.,Lebanon,851616,Western Asia,Western Asia,228.363
+2021,Syrian Arab Rep.,Lebanon,842640,Western Asia,Western Asia,228.363
+2012,Afghanistan,Iran (Islamic Rep. of),824100,Southern Asia,Southern Asia,1553.816
+2013,Afghanistan,Iran (Islamic Rep. of),814052,Southern Asia,Southern Asia,1553.816
+2019,South Sudan,Sudan,810917,Eastern Africa,Northern Africa,416.6367
+2021,South Sudan,Sudan,803634,Eastern Africa,Northern Africa,416.6367
+2018,South Sudan,Uganda,789287,Eastern Africa,Eastern Africa,1601.213
+2021,Afghanistan,Iran (Islamic Rep. of),781730,Southern Asia,Southern Asia,1553.816
+2020,Afghanistan,Iran (Islamic Rep. of),780000,Southern Asia,Southern Asia,1553.816
+2017,South Sudan,Sudan,772715,Eastern Africa,Northern Africa,416.6367
+2020,South Sudan,Sudan,736685,Eastern Africa,Northern Africa,416.6367
+2018,Syrian Arab Rep.,Jordan,676283,Western Asia,Western Asia,373.3118
+2021,Syrian Arab Rep.,Germany,675490,Western Asia,Western Europe,2842.564
+2021,Syrian Arab Rep.,Jordan,672952,Western Asia,Western Asia,373.3118
+2020,Syrian Arab Rep.,Jordan,662790,Western Asia,Western Asia,373.3118
+2018,Venezuela (Bolivarian Republic of),Peru,656274,South America,South America,2599.938
+2019,Syrian Arab Rep.,Jordan,654692,Western Asia,Western Asia,373.3118
+2017,Syrian Arab Rep.,Jordan,653031,Western Asia,Western Asia,373.3118
+2016,Syrian Arab Rep.,Jordan,648836,Western Asia,Western Asia,373.3118
+2020,Syrian Arab Rep.,Germany,642557,Western Asia,Western Europe,2842.564
+2016,South Sudan,Uganda,639955,Eastern Africa,Eastern Africa,1601.213
+2015,Syrian Arab Rep.,Jordan,628223,Western Asia,Western Asia,373.3118
+2014,Syrian Arab Rep.,Jordan,623112,Western Asia,Western Asia,373.3118
+2019,Syrian Arab Rep.,Germany,614098,Western Asia,Western Europe,2842.564
+2013,Syrian Arab Rep.,Türkiye,585711,Western Asia,Western Asia,753.7882
+2013,Syrian Arab Rep.,Jordan,585304,Western Asia,Western Asia,373.3118
+2018,Syrian Arab Rep.,Germany,584461,Western Asia,Western Europe,2842.564
+2017,Syrian Arab Rep.,Germany,567507,Western Asia,Western Europe,2842.564
+2021,Venezuela (Bolivarian Republic of),Ecuador,508935,South America,South America,1835.851
+2021,Venezuela (Bolivarian Republic of),Chile,505007,South America,South America,4840.624
+2016,Syrian Arab Rep.,Germany,475649,Western Asia,Western Europe,2842.564
+2012,Iraq,Syrian Arab Rep.,472111,Western Asia,Western Asia,761.6941
+2020,Venezuela (Bolivarian Republic of),Chile,457324,South America,South America,4840.624
+2021,Dem. Rep. of the Congo,Uganda,456537,Middle Africa,Eastern Africa,1612.888
+2019,Venezuela (Bolivarian Republic of),Chile,455494,South America,South America,4840.624
+2017,Burundi,United Rep. of Tanzania,438411,Eastern Africa,Eastern Africa,893.7339
+2018,South Sudan,Ethiopia,422535,Eastern Africa,Eastern Africa,1017.099
+2017,South Sudan,Ethiopia,421867,Eastern Africa,Eastern Africa,1017.099
+2020,Dem. Rep. of the Congo,Uganda,421563,Middle Africa,Eastern Africa,1612.888
+2020,Venezuela (Bolivarian Republic of),Ecuador,415835,South America,South America,1835.851
+2019,Dem. Rep. of the Congo,Uganda,397638,Middle Africa,Eastern Africa,1612.888
+2016,Burundi,United Rep. of Tanzania,393734,Eastern Africa,Eastern Africa,893.7339
+2019,Venezuela (Bolivarian Republic of),Ecuador,388861,South America,South America,1835.851
+2021,South Sudan,Ethiopia,386929,Eastern Africa,Eastern Africa,1017.099
+2021,Sudan,Chad,377866,Northern Africa,Middle Africa,1797.994
+2020,Sudan,Chad,366304,Northern Africa,Middle Africa,1797.994
+2020,South Sudan,Ethiopia,365236,Eastern Africa,Eastern Africa,1017.099
+2014,Sudan,Chad,357747,Northern Africa,Middle Africa,1797.994
+2013,Sudan,Chad,352958,Northern Africa,Middle Africa,1797.994
+2021,Central African Rep.,Cameroon,340549,Middle Africa,Middle Africa,868.264
+2016,South Sudan,Ethiopia,338821,Eastern Africa,Eastern Africa,1017.099
+2018,Sudan,Chad,338529,Northern Africa,Middle Africa,1797.994

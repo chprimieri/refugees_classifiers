@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor, GradientBoostingRegressor
 from sklearn import metrics
-from sklearn.model_selection import cross_val_score, cross_val_predict
+from sklearn.model_selection import cross_val_score
 import utils
 
 # Creating a DataFrame from the dataset already prepared
@@ -34,12 +34,13 @@ print("Coefficient of Determination: ", metrics.r2_score(y_test, y_pred))
 print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
 
 # Visualize the Original Vs Predicted Data
-utils.visualize_original_vs_predicted(y_test, y_pred)
+utils.visualize_original_vs_predicted(y_test, y_pred, 'Random Forest')
 
 # Feature importance
-feature_imp = pd.Series(model_rf.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
-              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
-              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+feature_imp = pd.Series(model_rf.feature_importances_, index=data[[
+            'Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+            'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+            'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
 # print(feature_imp.head(50))
 
 utils.visualize_feature_importance(feature_imp, 'Random Forest')
@@ -68,18 +69,19 @@ print("Coefficient of Determination: ", metrics.r2_score(y_test, y_pred))
 print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
 
 # Visualize the Original Vs Predicted Data
-utils.visualize_original_vs_predicted(y_test, y_pred)
+utils.visualize_original_vs_predicted(y_test, y_pred, 'Ada Boost')
 
 # Feature importance
-feature_imp = pd.Series(model_ab.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
-              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
-              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+feature_imp = pd.Series(model_ab.feature_importances_, index=data[[
+            'Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+            'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+            'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
 # print(feature_imp.head(50))
 utils.visualize_feature_importance(feature_imp, 'Ada Boost')
 
 
 ## GRADIENT BOOSTING ##
-# Create an Histogram-based Gradient Boosting Regressor 
+# Create an Gradient Boosting Regressor 
 model_gb = GradientBoostingRegressor(random_state=0)
 
 print("\nGRADIENT BOOSTING")
@@ -101,11 +103,12 @@ print("Coefficient of Determination: ", metrics.r2_score(y_test, y_pred))
 print('Median Absolute Error:', round(metrics.median_absolute_error(y_test, y_pred), 0))
 
 # Visualize the Original Vs Predicted Data
-utils.visualize_original_vs_predicted(y_test, y_pred)
+utils.visualize_original_vs_predicted(y_test, y_pred, 'Gradient Boosting')
 
 # Feature importance
-feature_imp = pd.Series(model_gb.feature_importances_, index=data[['Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
-              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
-              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
+feature_imp = pd.Series(model_gb.feature_importances_, index=data[[
+            'Origin Region','Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
+            'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
+            'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']].columns)
 # print(feature_imp.head(50))
-utils.visualize_feature_importance(feature_imp, 'Histogram-based Gradient Boosting')
+utils.visualize_feature_importance(feature_imp, 'Gradient Boosting')

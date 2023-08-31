@@ -17,9 +17,10 @@ def preprocess_data(data):
 
     # Split data into features and results (for the regression task)
     # Features
-    X = data[['Num Origin Region','Num Asylum Region','Distance (Km)','HDI asylum','LE asylum','EYS asylum',
-              'MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum','HDI diff',
-              'LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff','PHDI diff']]  
+    X = data[['Num Origin Region','Num Asylum Region','Distance (Km)','HDI asylum','LE asylum',
+              'EYS asylum','MYS asylum','GNIPC asylum','GDI asylum','GII asylum','PHDI asylum',
+              'HDI diff','LE diff','EYS diff','MYS diff','GNIPC diff','GDI diff','GII diff',
+              'PHDI diff']]  
     # Results
     y = data[['Refugees']].values.ravel()
 
@@ -27,7 +28,7 @@ def preprocess_data(data):
     # 80% training and 20% test
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)  
 
-    # Normalize data, assumes data is normally distributed (e.g. Gaussian with 0 mean and unit variance)
+    # Normalize data, assumes data is normally distributed
     scaler = StandardScaler()
     # Initialize the scaler with the training data
     scaler.fit(X_train)
@@ -38,7 +39,7 @@ def preprocess_data(data):
 
     return X_train_std, X_test_std, y_train, y_test
 
-def visualize_original_vs_predicted(y_test, y_pred):
+def visualize_original_vs_predicted(y_test, y_pred, title):
     x_ax = range(len(y_test))
 
     # Plot chart
@@ -47,13 +48,13 @@ def visualize_original_vs_predicted(y_test, y_pred):
     plt.plot(x_ax, y_pred, linewidth=1.1, label="Predicted Values")
 
     # Add labels to chart
-    plt.title("True vs Predicted Values")
+    plt.title(title)
     plt.xlabel('Samples')
     plt.ylabel('Refugees')
     plt.legend(loc='best',fancybox=True, shadow=True)
     plt.grid(True)
     plt.ticklabel_format(style='plain')
-    plt.show() 
+    plt.savefig('figures/' + title + '_original_predicted.png')
 
 def visualize_feature_importance(feature_imp, title):
     # Plot chart
@@ -64,4 +65,4 @@ def visualize_feature_importance(feature_imp, title):
     plt.xlabel('Feature Importance Score')
     plt.ylabel('Features')
     plt.title(title)
-    plt.show()
+    plt.savefig('figures/' + title + '_feature_importance.png')
